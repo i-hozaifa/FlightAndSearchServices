@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-
 const {PORT} = require('./config/serverConfig'); // Import the PORT from serverConfig
+// const CityRepository = require('./repository/city-repository');
 
 const SetupAndStartServer = async() => {
    // Create an instance of the express application or create the express object
@@ -15,6 +15,8 @@ const SetupAndStartServer = async() => {
 
     app.listen(3000, () => {
         console.log(`Server is running on port ${PORT}`);
+
+
        
 });
 
