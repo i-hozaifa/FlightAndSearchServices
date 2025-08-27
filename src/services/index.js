@@ -1,5 +1,5 @@
 
 
-module.exports{
+module.exports = {
     CityService : require('./city-services'),
 } 
