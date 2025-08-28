@@ -3,7 +3,7 @@ const {CityService} = require('../services/index');
 const cityService = new CityService();
 const create  = async (req, res) => {
     try {
-       const city = await cityService.createCity(req.body);
+       const city = await cityService.createCity(req.body);  // req.body --> {name : "city name"}
        return res.status(201).json({
         data : city,
         success : true,
@@ -23,7 +23,7 @@ const create  = async (req, res) => {
 
 const dellete  = async (req, res) => {
     try {
-       const response = await cityService.deleteCity(req.params.id);
+       const response = await cityService.deleteCity(req.params.id); // req.params.id --> id of the city to be deleted
        return res.status(200).json({
         data : response,
         success : true,
@@ -63,7 +63,7 @@ const get   = async (req, res) => {
 //  PATCH --> /city/:id --> req.body
 const update  = async (req, res) => {
     try {
-        const response = await cityService.updateCity(req.params.id);
+        const response = await cityService.updateCity(req.params.id,req.body);  // req.body --> {name : "new city name"}
        return res.status(200).json({
         data : response,
         success : true,
@@ -82,9 +82,32 @@ const update  = async (req, res) => {
     }
 }
 
+const getAll = async (req, res) => {
+    try { 
+        console.log(req.params);
+        const cities = await cityService.getAllCities(req.query); 
+        return res.status(200).json({
+        data : cities,
+        success : true,
+        message : "Successfully fetched  all city",
+        err : {}
+       });
+    } catch (error) {
+        console.log(error );
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: "Not able to fetch a city",
+            err: error
+        });
+    }
+}
+    
+
 module.exports = {
     create,
     dellete,
     get,
-    update
+    update,
+    getAll
 }
