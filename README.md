@@ -53,3 +53,10 @@ create 'env' file in the root directory with name
    -a flight belongs to airplane but one airplane can be used in multiple flight
    -a city has many airports but one airport belongs to a city
    - one  airport  can have multiple flights but flight belongs to one airport
+
+
+   ## Tables 
+
+   ### City -> id, name , created_at, updated_at
+   ### Airport -> id, name, adress, city_id, created_at, updated_at
+       Relationship -> City has many airports and Airport belong to a (one to many)
